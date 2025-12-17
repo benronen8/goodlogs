@@ -9,3 +9,5 @@ dist/
 wheels/
 *.egg-info
 venv
+
+docs/_build/
