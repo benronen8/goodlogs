@@ -55,3 +55,28 @@ jobs:
 
       - name: Run mypy
         run: mypy .
+
+  docs-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements-docs.txt
+          pip install -e .
+
+      - name: Build docs (strict mode)
+        working-directory: docs
+        run: sphinx-build -W -b html . _build/html
+
+      - name: Check external links
+        working-directory: docs
+        run: sphinx-build -W -b linkcheck . _build/linkcheck
