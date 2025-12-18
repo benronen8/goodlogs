@@ -5,16 +5,6 @@ from collections import OrderedDict
 from typing import Any
 
 
-@functools.lru_cache
-def standard_log_record_attributes() -> set[str]:
-    return set(
-        logging.LogRecord(
-            name="dummy", level=logging.INFO, pathname="", lineno=0,
-            msg="", args=(), exc_info=None
-        ).__dict__.keys()
-    )
-
-
 class JSONFormatter(logging.Formatter):
     def __init__(self) -> None:
         super().__init__()
@@ -59,3 +49,13 @@ class JSONFormatter(logging.Formatter):
                 dict_record[key] = value
 
         return json.dumps(dict_record)
+
+
+@functools.lru_cache
+def standard_log_record_attributes() -> set[str]:
+    return set(
+        logging.LogRecord(
+            name="dummy", level=logging.INFO, pathname="", lineno=0,
+            msg="", args=(), exc_info=None
+        ).__dict__.keys()
+    )
