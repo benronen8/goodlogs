@@ -29,7 +29,7 @@ def configure_logging(
             },
             "filters": {
                 "context": {
-                    "()": "goodlog.filters.ContextFilter"
+                    "()": "goodlog.filters.AddExtraInfoFilter"
                 },
             },
             "root": {
