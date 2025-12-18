@@ -9,8 +9,13 @@ from typing import Any
 def standard_log_record_attributes() -> set[str]:
     return set(
         logging.LogRecord(
-            name="dummy", level=logging.INFO, pathname="", lineno=0,
-            msg="", args=(), exc_info=None
+            name="dummy",
+            level=logging.INFO,
+            pathname="",
+            lineno=0,
+            msg="",
+            args=(),
+            exc_info=None,
         ).__dict__.keys()
     )
 
@@ -51,7 +56,8 @@ class JSONFormatter(logging.Formatter):
             if value is not None:
                 dict_record[field] = value
 
-        # Add any extra fields from LogRecord.__dict__ (like those passed via extra= parameter)
+        # Add any extra fields from LogRecord.__dict__
+        # (like those passed via extra= parameter)
         exclude = set(dict_record.keys())
         exclude.update(standard_log_record_attributes())
         for key, value in record.__dict__.items():

@@ -5,7 +5,7 @@ from .extra_info import set_info
 
 
 def configure_logging(
-        extra_info: dict[str, Any] | None = None,
+    extra_info: dict[str, Any] | None = None,
 ) -> None:
     if extra_info is None:
         extra_info = {}
@@ -28,9 +28,7 @@ def configure_logging(
                 }
             },
             "filters": {
-                "context": {
-                    "()": "goodlog.filters.ContextFilter"
-                },
+                "context": {"()": "goodlog.filters.ContextFilter"},
             },
             "root": {
                 "handlers": ["stdout"],
