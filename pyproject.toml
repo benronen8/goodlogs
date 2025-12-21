@@ -6,7 +6,6 @@ build-backend = "setuptools.build_meta"
 name = "goodlog"
 dynamic = ["version"]
 description = "Do natural python logging in a natural manner"
-license = "MIT"
 authors = [{ name = "Ben Ronen" }]
 keywords = ["log", "logs", "logger", "logging", "utilities", "utils"]
 requires-python = ">=3.10,<4"
